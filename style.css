@@ -3,6 +3,29 @@ body {
   text-shadow: 0 0 0.4vw currentColor;
 }
 
+.menu {
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  text-align: center;
+}
+
+.menu_list {
+  padding: 0;
+  list-style-type: none;
+  overflow: hidden;
+}
+
+label {
+  margin: 0 auto;
+  display: inline-block;
+  padding: 0 10px;
+  text-decoration: none;
+  font-size: 0.7vw;
+  text-transform: uppercase;
+}
+
 .wrapper {
   position: relative;
   overflow: hidden;
@@ -79,25 +102,42 @@ body {
   font-size: 1.7vw;
 }
 .element .name {
-  font-size: 0.7vw;
+  font-size: 0.6vw;
 }
 .element .atomic-mass {
   position: absolute;
   left: 0;
   right: 0;
+  top: 0;
+  padding: 2px;
+  text-align: right;
+}
+.element .electronegativity {
+  position: absolute;
+  left: 0;
+  right: 0;
   bottom: 0;
   padding: 2px;
-  text-align: center;
+  text-align: left;
+}
+.element .density {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 2px;
+  text-align: right;
 }
 .element .atomic-weight {
   position: absolute;
   right: 0;
   top: 0;
   list-style: none;
-  margin: 0;
+  margin: 0.6vw 0;
   padding: 2px;
   opacity: 0;
   transition: 200ms;
+  font-size: 0.3vw;
   text-align: right;
 }
 .element .model {
@@ -1749,7 +1789,7 @@ body {
 .element .model .orbital .electron:nth-last-child(32):first-child ~ .electron:nth-child(32) {
   transform: rotate(348.75deg);
 }
-.element input[type="radio"] {
+.element input[type=radio] {
   -webkit-appearance: none;
   position: absolute;
   z-index: 2;
@@ -1761,21 +1801,21 @@ body {
   cursor: pointer;
   outline: none;
 }
-.element input[type="radio"].activate:hover ~ .square {
+.element input[type=radio].activate:hover ~ .square {
   z-index: 2;
   transform: scale(1.35);
   transition-delay: 0ms;
   outline: none;
   pointer-events: none;
 }
-.element input[type="radio"].activate:checked + input[type="radio"].deactivate {
+.element input[type=radio].activate:checked + input[type=radio].deactivate {
   z-index: 3;
   pointer-events: all;
 }
-.element input[type="radio"].activate:checked ~ .overlay {
+.element input[type=radio].activate:checked ~ .overlay {
   opacity: 0.75;
 }
-.element input[type="radio"].activate:checked ~ .square {
+.element input[type=radio].activate:checked ~ .square {
   z-index: 3;
   transform: scale(3);
   transition-duration: 500ms, 0ms, 200ms, 200ms, 200ms, 200ms;
@@ -1783,32 +1823,32 @@ body {
   outline: none;
   cursor: auto;
 }
-.element input[type="radio"].activate:checked ~ .square .label {
+.element input[type=radio].activate:checked ~ .square .label {
   transition-duration: 500ms;
   transform: scale(0.75);
 }
-.element input[type="radio"].activate:checked ~ .square .atomic-weight {
+.element input[type=radio].activate:checked ~ .square .atomic-weight {
   opacity: 1;
   transition: 500ms;
 }
-.element input[type="radio"].activate:checked ~ .square .model {
+.element input[type=radio].activate:checked ~ .square .model {
   display: block;
   animation: fade-in;
   animation-duration: 1s;
 }
-.element input[type="radio"].activate:checked ~ .square .orbital {
+.element input[type=radio].activate:checked ~ .square .orbital {
   animation-name: rotate;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
-.element input[type="radio"].deactivate {
+.element input[type=radio].deactivate {
   position: fixed;
   display: block;
   z-index: 1;
   opacity: 0;
   pointer-events: none;
 }
-.element input[type="radio"].deactivate:checked ~ .square {
+.element input[type=radio].deactivate:checked ~ .square {
   z-index: 1;
 }
 
@@ -1854,12 +1894,21 @@ body {
   opacity: 0.2;
 }
 
+.radioactive {
+  color: #dffc05;
+}
+
+.radioactive .symbol {
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+}
+
 .alkali-metal {
-  color: #ecbe59;
+  color: #a100ff;
 }
 
 .alkaline-earth-metal {
-  color: #dee955;
+  color: #F84AA7;
 }
 
 .lanthanoid {
@@ -1871,23 +1920,27 @@ body {
 }
 
 .transition-metal {
-  color: #fd8572;
+  color: #ED831E;
 }
 
 .post-transition-metal {
-  color: #4cddf3;
+  color: #61d622;
 }
 
 .metalloid {
-  color: #3aefb6;
+  color: #00c462;
 }
 
 .other-nonmetal {
-  color: #52ee61;
+  color: #28EFF6;
+}
+
+.halogen {
+  color: #00bfff;
 }
 
 .noble-gas {
-  color: #759fff;
+  color: #007fff;
 }
 
 .unknown {
@@ -2006,19 +2059,19 @@ body {
   grid-column: 18;
 }
 
-.r1 input[type="radio"].activate:checked ~ .square {
+.r1 input[type=radio].activate:checked ~ .square {
   top: 100%;
 }
 
-.r10 input[type="radio"].activate:checked ~ .square {
+.r10 input[type=radio].activate:checked ~ .square {
   top: -100%;
 }
 
-.c1 input[type="radio"].activate:checked ~ .square {
+.c1 input[type=radio].activate:checked ~ .square {
   left: 100%;
 }
 
-.c18 input[type="radio"].activate:checked ~ .square {
+.c18 input[type=radio].activate:checked ~ .square {
   left: -100%;
 }
 
@@ -2107,8 +2160,10 @@ body {
 #post-transition-metals:checked ~ .periodic-table .element:not(.post-transition-metal),
 #metalloids:checked ~ .periodic-table .element:not(.metalloid),
 #other-nonmetals:checked ~ .periodic-table .element:not(.other-nonmetal),
+#halogens:checked ~ .periodic-table .element:not(.halogen),
 #noble-gasses:checked ~ .periodic-table .element:not(.noble-gas),
 #unknown:checked ~ .periodic-table .element:not(.unknown),
+#radioactive-elements:checked ~ .periodic-table .element:not(.radioactive),
 #alkali-metals:checked ~ .periodic-table .placeholder,
 #alkaline-earth-metals:checked ~ .periodic-table .placeholder,
 #lanthanoids:checked ~ .periodic-table .placeholder:not(.lanthanoid),
@@ -2117,8 +2172,10 @@ body {
 #post-transition-metals:checked ~ .periodic-table .placeholder,
 #metalloids:checked ~ .periodic-table .placeholder,
 #other-nonmetals:checked ~ .periodic-table .placeholder,
+#halogens:checked ~ .periodic-table .placeholder,
 #noble-gasses:checked ~ .periodic-table .placeholder,
-#unknown:checked ~ .periodic-table .placeholder {
+#unknown:checked ~ .periodic-table .placeholder,
+#radioactive-elements:checked ~ .periodic-table .placeholder {
   opacity: 0.15;
   pointer-events: none;
 }
@@ -2131,8 +2188,10 @@ body {
 #post-transition-metals:checked ~ .periodic-table .key label:not(.post-transition-metal),
 #metalloids:checked ~ .periodic-table .key label:not(.metalloid),
 #other-nonmetals:checked ~ .periodic-table .key label:not(.other-nonmetal),
+#halogens:checked ~ .periodic-table .key label:not(.halogen),
 #noble-gasses:checked ~ .periodic-table .key label:not(.noble-gas),
-#unknown:checked ~ .periodic-table .key label:not(.unknown) {
+#unknown:checked ~ .periodic-table .key label:not(.unknown),
+#radioactive-elements:checked ~ .periodic-table .key label:not(.radioactive) {
   opacity: 0.65;
 }
 
@@ -2145,3 +2204,5 @@ body {
   pointer-events: all;
   cursor: pointer;
 }
+
+/*# sourceMappingURL=style.css.map */
